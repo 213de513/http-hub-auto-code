@@ -1,0 +1,62 @@
+{
+    "name": "http-hub-auto-code",
+    "displayName": "http-hub-auto-code",
+    "description": "http-hub的代码提示扩展",
+    "version": "0.0.5",
+    "engines": {
+        "vscode": "^1.46.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "icon": "public/img/logo.png",
+    "publisher": "444838468",
+    "activationEvents": [
+        "onLanguage:javascript",
+        "onLanguage:vue",
+        "onLanguage:typescript"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "configuration": {
+            "title": "HttpHub",
+            "type": "object",
+            "properties": {
+                "httphub.modulePath": {
+                    "type": "string",
+                    "default": "/src/api/module",
+                    "description": "承载API模块的文件夹的相对路径"
+                }
+            }
+        },
+        "commands": [{
+            "command": "http-hub-auto-code.showTime",
+            "title": "Show Time"
+        }]
+    },
+    "repository": {
+        "url": "https://github.com/213de513/http-hub-auto-code/",
+        "type": "git"
+    },
+    "scripts": {
+        "vscode:prepublish": "yarn run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "yarn run compile && yarn run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.46.0",
+        "@types/glob": "^7.1.3",
+        "@types/mocha": "^8.0.4",
+        "@types/node": "^12.11.7",
+        "eslint": "^7.19.0",
+        "@typescript-eslint/eslint-plugin": "^4.14.1",
+        "@typescript-eslint/parser": "^4.14.1",
+        "glob": "^7.1.6",
+        "mocha": "^8.2.1",
+        "typescript": "^4.1.3",
+        "vscode-test": "^1.5.0"
+    }
+}
