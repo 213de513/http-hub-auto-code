@@ -6,5 +6,7 @@ export interface EolinkerApi {
   baseInfo: {
     apiName: string;
     apiNoteRaw: string;
+    apiRequestType: string;
+    apiURI: string;
   };
 }

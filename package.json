@@ -2,7 +2,7 @@
     "name": "http-hub-auto-code",
     "displayName": "http-hub-auto-code",
     "description": "http-hub的代码提示扩展",
-    "version": "0.0.11",
+    "version": "1.0.0",
     "engines": {
         "vscode": "^1.55.0"
     },

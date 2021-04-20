@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require('fs');
 const _ = require('lodash');
+const index_1 = require("../const/index");
 exports.default = {
     getProjectRootPath(doc) {
         const filePath = doc.uri.fsPath;
@@ -51,10 +52,12 @@ exports.default = {
                 else if (fileType === 'json') {
                     const data = require(`${modulePath}/${path}`);
                     target[moduleName] = data.length && data.map((api) => {
-                        const { apiName, apiNoteRaw } = api.baseInfo;
+                        const { apiName, apiRequestType, apiURI, apiNoteRaw, } = api.baseInfo;
+                        const urlArr = apiURI.split('/');
+                        const name = index_1.eolinkerType[apiRequestType] + '_' + urlArr[urlArr.length - 1];
                         return {
-                            name: _.camelCase(apiName),
-                            desc: apiNoteRaw || 'http-hub'
+                            name: _.camelCase(name),
+                            desc: apiName || apiNoteRaw || 'http-hub'
                         };
                     });
                 }
@@ -92,4 +95,3 @@ exports.default = {
         }
     }
 };
-//# sourceMappingURL=index.js.map

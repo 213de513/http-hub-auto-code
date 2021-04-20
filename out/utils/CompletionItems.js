@@ -10,4 +10,3 @@ class ProvideCompletionItem {
     }
 }
 exports.default = ProvideCompletionItem;
-//# sourceMappingURL=CompletionItems.js.map

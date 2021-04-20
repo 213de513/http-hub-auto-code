@@ -69,4 +69,3 @@ module.exports = {
     activate,
     deactivate
 };
-//# sourceMappingURL=extension.js.map

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const _ = require('lodash');
 import { ApiInterface, EolinkerApi } from '../interface/Api'
-
+import { eolinkerType } from '../const/index'
 export default {
   getProjectRootPath(doc: any) {
     const filePath = doc.uri.fsPath;
@@ -46,10 +46,12 @@ export default {
         } else if (fileType === 'json') {
           const data = require(`${modulePath}/${path}`)
           target[moduleName] = data.length && data.map((api: EolinkerApi) => {
-            const { apiName, apiNoteRaw } = api.baseInfo
+            const { apiName, apiRequestType, apiURI, apiNoteRaw, } = api.baseInfo
+            const urlArr = apiURI.split('/')
+            const name = eolinkerType[apiRequestType] + '_' + urlArr[urlArr.length - 1]
             return {
-              name: _.camelCase(apiName),
-              desc: apiNoteRaw || 'http-hub'
+              name: _.camelCase(name),
+              desc: apiName || apiNoteRaw || 'http-hub'
             }
           })
         }
